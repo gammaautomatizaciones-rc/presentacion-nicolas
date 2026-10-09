@@ -136,6 +136,18 @@
   .mod .mt{font-weight:800; font-size:13.5px; margin-bottom:4px; color:#fff}
   .mod .mx{color:var(--grey); font-size:11.8px; font-weight:500; line-height:1.45}
 
+  /* ---- muro de referidos (logos) ---- */
+  .wall{display:grid; gap:10px; grid-template-columns:repeat(2,1fr)}
+  @media(min-width:560px){ .wall{grid-template-columns:repeat(3,1fr)} }
+  @media(min-width:860px){ .wall{grid-template-columns:repeat(4,1fr)} }
+  .w{background:var(--card); border:1px solid var(--line); border-radius:13px; padding:13px 12px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:9px}
+  .w .ph{height:46px; display:flex; align-items:center; justify-content:center}
+  .w .ph.real{background:#fff; border-radius:9px; padding:6px 10px}
+  .w .ph.real img{max-height:34px; max-width:100%; object-fit:contain; display:block}
+  .w .badge{width:46px; height:46px; border-radius:12px; background:#0d0d0d; border:1px solid rgba(255,235,59,.28); color:var(--yellow); font-weight:900; font-size:17px; display:flex; align-items:center; justify-content:center; letter-spacing:-.02em}
+  .w .nm{font-weight:800; font-size:12.5px; line-height:1.2}
+  .w .ru{color:var(--grey2); font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.07em}
+
   /* ---- contacto final ---- */
   .final{text-align:center}
   .final h2{font-size:clamp(26px,7vw,46px)}
@@ -323,7 +335,30 @@
     </div>
   </section>
 
-  <!-- 9 CIERRE -->
+  <!-- 9 REFERIDOS (muro de logos) -->
+  <section class="slide">
+    <div class="inner">
+      <div class="kicker">Quiénes ya confían en nosotros <span class="n">· referidos</span></div>
+      <h2>No arrancás de cero. <span class="hl">Ya trabajamos</span> con negocios reales.</h2>
+      <p class="sub">Gente que depende de nosotros todos los días, en rubros y provincias distintas. Nuestros referidos son los que nos hacen como empresa:</p>
+      <div class="wall">
+        <div class="w"><div class="ph real"><img src="ref-lacem.jpg" alt="LACEM"></div><div class="nm">LACEM</div><div class="ru">Laboratorio</div></div>
+        <div class="w"><div class="badge">B</div><div class="nm">Brizuela Automotores</div><div class="ru">Concesionaria</div></div>
+        <div class="w"><div class="badge">B</div><div class="nm">Berria</div><div class="ru">Combustibles</div></div>
+        <div class="w"><div class="badge">TU</div><div class="nm">TU Distribuidora</div><div class="ru">Distribuidora</div></div>
+        <div class="w"><div class="badge">E</div><div class="nm">Excéntrica</div><div class="ru">Comercio</div></div>
+        <div class="w"><div class="badge">O</div><div class="nm">Omnia Gym</div><div class="ru">Gimnasio</div></div>
+        <div class="w"><div class="badge">C</div><div class="nm">Cultura Fit</div><div class="ru">Gimnasio</div></div>
+        <div class="w"><div class="badge">G</div><div class="nm">GYMBV</div><div class="ru">Gimnasio</div></div>
+        <div class="w"><div class="badge">R</div><div class="nm">Romina Oviedo</div><div class="ru">Podología</div></div>
+        <div class="w"><div class="badge">P</div><div class="nm">Pit Stop</div><div class="ru">Maxikiosco</div></div>
+        <div class="w"><div class="badge">N</div><div class="nm">Nardini</div><div class="ru">Comercio</div></div>
+        <div class="w"><div class="badge">24</div><div class="nm">24 La Madrid</div><div class="ru">Comercio</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 CIERRE -->
   <section class="slide final">
     <div class="inner">
       <h2>Arrancamos cuando <span class="hl">quieras</span>, Nicolás.</h2>
