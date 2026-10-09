@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>GAMMA — Presentación para Nicolás</title>
+<meta name="description" content="GAMMA Automatizaciones: publicidad que trae clientes nuevos y GAMMA SG, el sistema que ordena todo el negocio. Resultados medidos o te devolvemos la inversión.">
+<meta name="theme-color" content="#0a0a0a">
+<meta property="og:type" content="website">
+<meta property="og:title" content="GAMMA — Presentación para Nicolás">
+<meta property="og:description" content="Publicidad que trae conversaciones nuevas + GAMMA SG, el sistema que ordena todo el negocio. Resultados medidos o te devolvemos la inversión.">
+<meta property="og:image" content="https://gammaautomatizaciones-rc.github.io/presentacion-nicolas/logo.png">
+<meta property="og:url" content="https://gammaautomatizaciones-rc.github.io/presentacion-nicolas/">
+<meta property="og:locale" content="es_AR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="logo.png" type="image/png">
+<link rel="apple-touch-icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0a0a; --card:#1a1a1a; --line:#2a2a2a;
+    --yellow:#FFEB3B; --gold2:#FFC107;
+    --white:#fff; --grey:#a0a0a0; --grey2:#6b6b6b;
+    --maxw:880px; --navh:78px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    font-family:'Montserrat',-apple-system,"Segoe UI",sans-serif;
+    background:var(--bg); color:var(--white); line-height:1.55;
+    -webkit-font-smoothing:antialiased; overflow:hidden;
+  }
+  body::before{content:""; position:fixed; inset:0; z-index:0;
+    background:
+      radial-gradient(900px 500px at 85% -5%, rgba(255,235,59,.10), transparent 60%),
+      radial-gradient(700px 500px at 0% 100%, rgba(255,214,0,.06), transparent 55%), var(--bg);}
+  body::after{content:""; position:fixed; inset:0; z-index:0; opacity:.035; pointer-events:none;
+    background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);
+    background-size:54px 54px;}
+
+  /* ====== PROGRESO ====== */
+  .progress{position:fixed; top:0; left:0; right:0; height:3px; background:#1a1a1a; z-index:30}
+  .progress .bar{height:100%; width:0; background:linear-gradient(90deg,var(--yellow),var(--gold2)); transition:width .45s cubic-bezier(.4,0,.2,1)}
+
+  /* ====== BOTON PANTALLA COMPLETA ====== */
+  .fs-btn{position:fixed; top:14px; right:14px; z-index:40; display:inline-flex; align-items:center; gap:7px;
+    background:rgba(0,0,0,.55); border:1px solid var(--line); color:var(--grey); cursor:pointer;
+    border-radius:999px; padding:8px 13px; font-family:inherit; font-size:12px; font-weight:700;
+    backdrop-filter:blur(6px); transition:color .2s, border-color .2s}
+  .fs-btn:hover{color:var(--yellow); border-color:rgba(255,235,59,.5)}
+  .fs-btn svg{width:15px;height:15px}
+  .fs-btn .fs-txt{display:inline}
+  @media(max-width:560px){ .fs-btn .fs-txt{display:none} .fs-btn{padding:9px} }
+  :fullscreen .fs-btn{opacity:0; pointer-events:none}
+
+  /* ====== DECK / SLIDES ====== */
+  .deck{position:relative; height:100%; z-index:1}
+  .slide{
+    position:absolute; inset:0; padding:calc(env(safe-area-inset-top) + 44px) clamp(20px,6vw,56px) calc(var(--navh) + 20px);
+    display:flex; flex-direction:column; justify-content:center; overflow-y:auto;
+    opacity:0; visibility:hidden; transform:translateY(16px);
+    transition:opacity .45s ease, transform .45s ease, visibility 0s linear .45s;
+  }
+  .slide.active{opacity:1; visibility:visible; transform:none; transition:opacity .5s ease, transform .5s ease}
+  .inner{max-width:var(--maxw); margin:0 auto; width:100%}
+
+  .kicker{font-size:12px; font-weight:800; letter-spacing:.2em; text-transform:uppercase; color:var(--yellow); margin-bottom:16px; display:flex; align-items:center; gap:12px}
+  .kicker .n{font-size:11px; color:var(--grey2); letter-spacing:.14em}
+  .kicker.mute{color:var(--grey2)}
+  h2{font-weight:900; font-size:clamp(23px,5.6vw,38px); line-height:1.12; letter-spacing:-.02em; margin-bottom:10px}
+  h2 .hl{color:var(--yellow)}
+  .sub{color:var(--grey); font-size:clamp(14px,3.4vw,16.5px); font-weight:500; max-width:58ch; margin-bottom:clamp(20px,4vw,28px)}
+  .sub b{color:#fff; font-weight:700}
+
+  /* ---- Portada ---- */
+  .cover{text-align:left}
+  .brandrow{display:flex; align-items:center; gap:12px; margin-bottom:clamp(26px,7vw,48px)}
+  .brandrow img{width:42px;height:42px}
+  .brandname{font-weight:900; letter-spacing:.14em; font-size:20px}
+  .brandname b{color:var(--yellow)}
+  .tag-top{font-size:12px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--yellow); margin-bottom:16px}
+  h1{font-weight:900; font-size:clamp(28px,7.5vw,56px); line-height:1.05; letter-spacing:-.02em; margin-bottom:16px}
+  h1 .hl{color:var(--yellow)}
+  .lede{color:var(--grey); font-size:clamp(15px,3.8vw,19px); font-weight:500; max-width:46ch; margin-bottom:24px}
+  .chips{display:flex; flex-wrap:wrap; gap:9px}
+  .chip{background:#000; border:1px solid var(--line); border-radius:999px; padding:9px 14px; font-size:12.5px; font-weight:700; color:#e8e8e8}
+  .chip b{color:var(--yellow); font-weight:800}
+
+  /* ---- listas de puntos ---- */
+  .pts{display:grid; gap:11px}
+  @media(min-width:680px){ .pts.two{grid-template-columns:1fr 1fr} }
+  .pt{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:15px 17px}
+  .pt .t{font-weight:800; font-size:clamp(14.5px,3.6vw,16px); margin-bottom:5px; display:flex; gap:9px; align-items:flex-start}
+  .pt .t .dot{width:8px;height:8px;border-radius:50%;background:var(--yellow);margin-top:7px;flex:none;box-shadow:0 0 9px rgba(255,235,59,.6)}
+  .pt .x{color:var(--grey); font-size:clamp(13px,3.3vw,14.5px); font-weight:500; padding-left:17px; line-height:1.5}
+  .pt .x b{color:#fff; font-weight:700}
+
+  /* ---- banda destacada ---- */
+  .band{background:linear-gradient(135deg,#1c1c15,#121212); border:1px solid rgba(255,235,59,.30); border-radius:20px; padding:clamp(22px,5vw,34px); position:relative; overflow:hidden}
+  .band::before{content:""; position:absolute; top:-50%; left:-10%; width:420px; height:420px; background:radial-gradient(circle,rgba(255,235,59,.13),transparent 65%)}
+  .band .big{font-weight:900; font-size:clamp(30px,9vw,58px); line-height:1; letter-spacing:-.03em; color:var(--yellow); position:relative; margin-bottom:12px}
+  .band h2{position:relative}
+  .band p{color:var(--grey); font-size:clamp(14px,3.5vw,16.5px); font-weight:500; max-width:56ch; position:relative}
+  .band p b{color:#fff; font-weight:700}
+  .band .split{position:relative; display:grid; gap:14px; margin-top:4px}
+  @media(min-width:680px){ .band .split{grid-template-columns:1fr 1fr} }
+  .band .half{background:rgba(0,0,0,.35); border:1px solid var(--line); border-radius:14px; padding:16px 18px}
+  .band .half .ht{font-weight:800; font-size:15px; margin-bottom:6px; color:var(--yellow)}
+  .band .half p{color:var(--grey); font-size:13.5px; max-width:none}
+  .band .half p b{color:#fff}
+
+  /* ---- metricas ---- */
+  .metrics{display:grid; grid-template-columns:1fr 1fr; gap:11px}
+  @media(min-width:760px){ .metrics.four{grid-template-columns:repeat(4,1fr)} }
+  .metric{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:clamp(14px,4vw,22px)}
+  .metric.hot{border-color:rgba(255,235,59,.5); background:linear-gradient(165deg,#1c1c15,#141414)}
+  .metric .big{font-weight:900; font-size:clamp(24px,7vw,40px); color:var(--yellow); line-height:1; letter-spacing:-.02em; font-variant-numeric:tabular-nums}
+  .metric .lbl{color:var(--grey); font-size:clamp(11px,2.8vw,12.5px); font-weight:600; margin-top:8px; line-height:1.4}
+  .foot{margin-top:16px; font-size:12.5px; color:var(--grey2); font-style:italic; font-weight:500}
+
+  /* ---- referencias ---- */
+  .refs{display:grid; gap:12px; margin-top:16px}
+  @media(min-width:680px){ .refs{grid-template-columns:repeat(2,1fr)} }
+  .ref{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:clamp(15px,4vw,20px); display:flex; flex-direction:column; gap:7px}
+  .ref .nm{font-weight:800; font-size:clamp(14.5px,3.6vw,16px)}
+  .ref .ru{color:var(--yellow); font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase}
+  .ref .dd{color:var(--grey); font-size:12.5px; font-weight:500; line-height:1.5}
+  .ref .dd b{color:#fff; font-weight:700}
+
+  /* ---- modulos (grid compacto) ---- */
+  .mods{display:grid; gap:10px; grid-template-columns:1fr 1fr}
+  @media(min-width:760px){ .mods{grid-template-columns:repeat(4,1fr)} }
+  .mod{background:var(--card); border:1px solid var(--line); border-radius:13px; padding:14px 15px}
+  .mod .mt{font-weight:800; font-size:13.5px; margin-bottom:4px; color:#fff}
+  .mod .mx{color:var(--grey); font-size:11.8px; font-weight:500; line-height:1.45}
+
+  /* ---- contacto final ---- */
+  .final{text-align:center}
+  .final h2{font-size:clamp(26px,7vw,46px)}
+  .contact{display:inline-flex; flex-wrap:wrap; justify-content:center; gap:10px 22px; align-items:center; border-top:1px solid var(--line); padding-top:24px; margin-top:28px; font-size:13.5px; color:var(--grey); font-weight:600}
+  .contact b{color:var(--yellow); font-weight:800; letter-spacing:.08em}
+  .contact a{color:var(--grey); text-decoration:none}
+
+  /* ====== NAV ====== */
+  .nav{position:fixed; left:0; right:0; bottom:0; height:var(--navh); z-index:30;
+    display:flex; align-items:center; justify-content:space-between; gap:14px;
+    padding:0 clamp(16px,5vw,40px) env(safe-area-inset-bottom);
+    background:linear-gradient(0deg,rgba(10,10,10,.96),rgba(10,10,10,.75) 70%,transparent); backdrop-filter:blur(6px)}
+  .nav button{font-family:inherit; cursor:pointer; border:none; border-radius:999px; font-weight:800; transition:transform .15s, opacity .2s, background .2s}
+  .nav button:active{transform:scale(.96)}
+  .btn-prev{background:transparent; color:var(--grey); border:1px solid var(--line) !important; padding:12px 20px; font-size:13.5px}
+  .btn-prev:hover{color:#fff; border-color:var(--grey2) !important}
+  .btn-next{background:var(--yellow); color:#000; padding:14px 26px; font-size:14.5px; box-shadow:0 10px 30px -10px rgba(255,235,59,.5)}
+  .btn-next:hover{background:#fff}
+  .counter{display:flex; align-items:center; gap:7px; flex-wrap:wrap; justify-content:center}
+  .counter .dot{width:7px; height:7px; border-radius:50%; background:#333; transition:background .3s, transform .3s}
+  .counter .dot.on{background:var(--yellow); transform:scale(1.35)}
+  [hidden]{display:none !important}
+
+  /* ====== PRINT (PDF: cada paso = una pagina) ====== */
+  @media print{
+    @page{ size:A4; margin:14mm }
+    html,body{height:auto; overflow:visible; background:#0a0a0a; -webkit-print-color-adjust:exact; print-color-adjust:exact}
+    body::after{display:none}
+    .progress,.nav,.fs-btn{display:none !important}
+    .deck{height:auto}
+    .slide{position:static; inset:auto; opacity:1 !important; visibility:visible !important; transform:none !important;
+      min-height:auto; height:auto; padding:0 0 10mm; page-break-after:always; break-after:page; display:block}
+    .slide:last-child{page-break-after:auto}
+    .pt,.metric,.ref,.mod,.band{page-break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<div class="progress"><div class="bar" id="bar"></div></div>
+
+<button id="fs" class="fs-btn" hidden aria-label="Ver en pantalla completa">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M16 21h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+  <span class="fs-txt">Pantalla completa</span>
+</button>
+
+<div class="deck" id="deck">
+
+  <!-- 1 PORTADA -->
+  <section class="slide cover active">
+    <div class="inner">
+      <div class="brandrow"><img src="logo.png" alt="GAMMA"><div class="brandname">GAM<b>MA</b></div></div>
+      <div class="tag-top">Para Nicolás · propuesta de trabajo</div>
+      <h1>Dos motores para tu negocio:<br><span class="hl">clientes que entran</span> y todo <span class="hl">bajo control</span>.</h1>
+      <p class="lede">Por un lado traemos gente nueva con publicidad medida. Por el otro, ordenamos la operación con un sistema que ya usan negocios reales todos los días.</p>
+      <div class="chips">
+        <div class="chip"><b>Publicidad</b> orientada a resultados</div>
+        <div class="chip"><b>GAMMA SG</b> · sistema de gestión</div>
+        <div class="chip">Resultados <b>o te devolvemos la plata</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 PUBLICIDAD: QUE ES -->
+  <section class="slide">
+    <div class="inner">
+      <div class="kicker">Servicio 1 · Publicidad <span class="n">· qué es</span></div>
+      <h2>Manejamos tus redes y tu pauta con <span class="hl">una sola obsesión</span>: que te escriba gente nueva.</h2>
+      <p class="sub">No es "hacer unos posteos lindos". Es un equipo armando contenido, corriendo campañas pagas en Instagram y Facebook, y <b>atendiendo al que escribe</b> para que ninguna consulta se enfríe.</p>
+      <div class="pts two">
+        <div class="pt"><div class="t"><span class="dot"></span>Contenido y presencia</div><div class="x">Posteos, stories y reels todos los meses. Una sola cara de marca, prolija.</div></div>
+        <div class="pt"><div class="t"><span class="dot"></span>Campañas con pauta real</div><div class="x">Invertimos en Meta para llegarle a gente de tu zona que hoy <b>no te ve</b>.</div></div>
+        <div class="pt"><div class="t"><span class="dot"></span>Atención del que consulta</div><div class="x">Respondemos DMs y comentarios para que el interesado <b>no se vaya con otro</b>.</div></div>
+        <div class="pt"><div class="t"><span class="dot"></span>Todo medido</div><div class="x">Ves en números qué campaña te trae conversaciones. Nada a ojo.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 PUBLICIDAD: POR QUE IMPORTA -->
+  <section class="slide">
+    <div class="inner">
+      <div class="kicker mute">Servicio 1 · Publicidad <span class="n">· por qué importa</span></div>
+      <h2>Lo orgánico tiene <span class="hl">techo</span>. La pauta no.</h2>
+      <p class="sub">Si publicás sin pauta, tu promo le llega casi solo a quien <b>ya te sigue</b>. La gente que todavía no te conoce —justo la que te haría crecer— nunca se entera de que existís.</p>
+      <div class="pts two">
+        <div class="pt"><div class="t"><span class="dot"></span>Salís a buscar, no esperás</div><div class="x">En vez de esperar que te encuentren, apareces frente a gente nueva de tu zona.</div></div>
+        <div class="pt"><div class="t"><span class="dot"></span>Cada peso trabaja</div><div class="x">La pauta le pone un número a algo que antes era "a ver si funciona".</div></div>
+        <div class="pt"><div class="t"><span class="dot"></span>Ritmo constante</div><div class="x">No un envión y nada. Flujo continuo de consultas, mes a mes.</div></div>
+        <div class="pt"><div class="t"><span class="dot"></span>Te deja comparar</div><div class="x">Sabés cuánto te cuesta traer una conversación. Lo medís contra lo que vale un cliente.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 PUBLICIDAD: RESULTADOS -->
+  <section class="slide">
+    <div class="inner">
+      <div class="kicker">Servicio 1 · Publicidad <span class="n">· resultados</span></div>
+      <h2>No vendemos posteos. Traemos <span class="hl">conversaciones</span>. Y las medimos.</h2>
+      <p class="sub"><b>Medido, no estimado</b> — números reales de campañas que ya corrimos:</p>
+      <div class="metrics four">
+        <div class="metric hot"><div class="big">$173,82</div><div class="lbl">costo por conversación nueva (lead) vía pauta</div></div>
+        <div class="metric"><div class="big">61</div><div class="lbl">conversaciones nuevas con solo $10.603 de pauta</div></div>
+        <div class="metric"><div class="big">245</div><div class="lbl">personas que llegaron al 5º mensaje: el bot no las pierde</div></div>
+        <div class="metric"><div class="big">+13.800</div><div class="lbl">mensajes atendidos en producción, +2 meses sin cortes</div></div>
+      </div>
+      <div class="refs">
+        <div class="ref"><div class="nm">Clínica LACEM</div><div class="ru">Laboratorio de análisis clínicos</div><div class="dd"><b>923 pacientes</b> distintos atendidos · <b>12.633 mensajes</b> por WhatsApp.</div></div>
+        <div class="ref"><div class="nm">Brizuela Automotores</div><div class="ru">Concesionaria</div><div class="dd">Bot de ventas para un rubro de <b>alto valor</b>, con consultas atendidas todos los días.</div></div>
+      </div>
+      <p class="foot">Son conversaciones y volumen atendido reales. El cierre de cada venta corre después, del lado del negocio.</p>
+    </div>
+  </section>
+
+  <!-- 5 PUBLICIDAD: GARANTIA + TRATO -->
+  <section class="slide">
+    <div class="inner">
+      <div class="kicker">Servicio 1 · Publicidad <span class="n">· el trato</span></div>
+      <div class="band">
+        <div class="big">Resultados o te devolvemos la plata.</div>
+        <p>Jugamos con la nuestra. Si la campaña no te trae los resultados que acordamos, <b>te devolvemos la inversión</b>. Así de simple. Pero para que quede claro desde el día uno:</p>
+        <div class="split">
+          <div class="half">
+            <div class="ht">Lo nuestro</div>
+            <p>Te llenamos de <b>conversaciones</b>: gente nueva de tu zona escribiéndote, interesada, atendida en el momento.</p>
+          </div>
+          <div class="half">
+            <div class="ht">Lo tuyo</div>
+            <p>El <b>cierre de la venta lo hacés vos</b>. Te ponemos al cliente en la puerta; venderle y cerrar es tu trabajo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 GESTION: QUE ES -->
+  <section class="slide">
+    <div class="inner">
+      <div class="kicker">Servicio 2 · GAMMA SG <span class="n">· qué es</span></div>
+      <h2>Todo tu negocio, en <span class="hl">una sola pantalla</span>.</h2>
+      <p class="sub">GAMMA SG es nuestro sistema de gestión. Maneja caja, stock, precios, informes y empleados desde el celular o la PC. <b>Sin instalar nada</b> —se abre en el navegador— y si se corta internet, <b>seguís vendiendo igual</b>.</p>
+      <div class="pts two">
+        <div class="pt"><div class="t"><span class="dot"></span>Reemplaza el cuaderno y la planilla</div><div class="x">La info del negocio deja de estar repartida en tres lugares y en la cabeza de dos personas.</div></div>
+        <div class="pt"><div class="t"><span class="dot"></span>Lo ves de donde estés</div><div class="x">Cuánto se vendió hoy y quién cerró la caja, aunque no estés en el local.</div></div>
+        <div class="pt"><div class="t"><span class="dot"></span>Se corta la luz y no para</div><div class="x">La venta se guarda en el equipo y se sincroniza sola cuando vuelve la señal.</div></div>
+        <div class="pt"><div class="t"><span class="dot"></span>Nada que mantener</div><div class="x">Sin servidor en el local ni una PC que si se rompe se lleva todo puesto.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 GESTION: QUE INCLUYE -->
+  <section class="slide">
+    <div class="inner">
+      <div class="kicker mute">Servicio 2 · GAMMA SG <span class="n">· para qué sirve</span></div>
+      <h2>Un sistema, <span class="hl">todo el negocio</span>.</h2>
+      <p class="sub">Cada cosa que hoy te hace perder plata sin que lo veas, ordenada en un solo lado:</p>
+      <div class="mods">
+        <div class="mod"><div class="mt">Caja y punto de venta</div><div class="mx">Varios medios de pago, apertura, cierre y arqueo. Ticket impreso o digital.</div></div>
+        <div class="mod"><div class="mt">Stock y artículos</div><div class="mx">Se descuenta solo con cada venta. Código de barras y alertas de stock bajo.</div></div>
+        <div class="mod"><div class="mt">Precios y listas</div><div class="mx">Mayorista y escalones por cantidad. Actualizás por rubro, no uno por uno.</div></div>
+        <div class="mod"><div class="mt">Informes</div><div class="mx">Qué se vendió, con qué margen y quién lo vendió. Desde el celular.</div></div>
+        <div class="mod"><div class="mt">Empleados y permisos</div><div class="mx">Cada uno con su usuario. Vos decidís quién ve costos o cierra caja.</div></div>
+        <div class="mod"><div class="mt">Catálogo online</div><div class="mx">Tu catálogo con un link. El cliente arma el pedido y entra al sistema.</div></div>
+        <div class="mod"><div class="mt">Bots de WhatsApp</div><div class="mx">Atienden y toman pedidos a cualquier hora, con tus datos reales.</div></div>
+        <div class="mod"><div class="mt">Multisucursal</div><div class="mx">Cada local con su caja y stock, y comparativa de cuál rinde.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 GESTION: POR QUE IMPORTA + RESULTADOS -->
+  <section class="slide">
+    <div class="inner">
+      <div class="kicker">Servicio 2 · GAMMA SG <span class="n">· por qué importa</span></div>
+      <h2>No es una promesa. Está <span class="hl">funcionando</span>.</h2>
+      <p class="sub">No es un desarrollo que arranca con vos: hay negocios reales operando arriba todos los días. Números de la base de producción:</p>
+      <div class="metrics four">
+        <div class="metric hot"><div class="big">17</div><div class="lbl">negocios activos usando el sistema hoy</div></div>
+        <div class="metric"><div class="big">35.148</div><div class="lbl">ventas procesadas</div></div>
+        <div class="metric"><div class="big">19.881</div><div class="lbl">artículos gestionados</div></div>
+        <div class="metric"><div class="big">dic 2025</div><div class="lbl">en producción sin interrupciones</div></div>
+      </div>
+      <div class="pts two" style="margin-top:14px">
+        <div class="pt"><div class="t"><span class="dot"></span>Backup diario</div><div class="x">Copia automática todos los días + restauración a un momento anterior. Tus datos son tuyos.</div></div>
+        <div class="pt"><div class="t"><span class="dot"></span>Se actualiza solo</div><div class="x">Las mejoras entran sin que instales nada y sin costo de actualización.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 CIERRE -->
+  <section class="slide final">
+    <div class="inner">
+      <h2>Arrancamos cuando <span class="hl">quieras</span>, Nicolás.</h2>
+      <p class="sub" style="margin:0 auto 6px">Lo próximo es una charla corta con tus números: te mostramos la publicidad midiendo y el sistema funcionando con tu forma de trabajar. Si no te sirve, te lo decimos nosotros.</p>
+      <div class="contact">
+        <b>GAMMA</b>
+        <a href="mailto:info@gammaautomatizaciones.com">info@gammaautomatizaciones.com</a>
+        <a href="https://gammaautomatizaciones.com">gammaautomatizaciones.com</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="nav">
+  <button class="btn-prev" id="prev" hidden>← Anterior</button>
+  <div class="counter" id="dots"></div>
+  <button class="btn-next" id="next">Siguiente →</button>
+</div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const total=slides.length;
+  let i=0;
+  const bar=document.getElementById('bar');
+  const prev=document.getElementById('prev');
+  const next=document.getElementById('next');
+  const dots=document.getElementById('dots');
+  slides.forEach((_,k)=>{const d=document.createElement('span');d.className='dot'+(k===0?' on':'');dots.appendChild(d);});
+  const dotEls=[...dots.children];
+  function render(){
+    slides.forEach((s,k)=>s.classList.toggle('active',k===i));
+    dotEls.forEach((d,k)=>d.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/total*100)+'%';
+    prev.hidden=(i===0);
+    next.textContent=(i===total-1)?'Listo ✓':'Siguiente →';
+    const active=slides[i]; if(active) active.scrollTop=0;
+  }
+  function go(n){ i=Math.max(0,Math.min(total-1,n)); render(); }
+  next.addEventListener('click',()=>{ if(i<total-1) go(i+1); });
+  prev.addEventListener('click',()=>go(i-1));
+  document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();go(i+1);}
+    if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(i-1);}
+  });
+  let sx=null;
+  document.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;},{passive:true});
+  document.addEventListener('touchend',e=>{
+    if(sx===null)return; const dx=e.changedTouches[0].clientX-sx;
+    if(Math.abs(dx)>60){ dx<0?go(i+1):go(i-1); } sx=null;
+  },{passive:true});
+  render();
+
+  // ---- Pantalla completa (procedimiento: va SIEMPRE; se oculta si el navegador no lo soporta) ----
+  (function(){
+    const btn=document.getElementById('fs');
+    const raiz=document.documentElement;
+    if(!(raiz.requestFullscreen||raiz.webkitRequestFullscreen)){ return; }
+    btn.hidden=false;
+    btn.addEventListener('click',function(){
+      if(document.fullscreenElement||document.webkitFullscreenElement){
+        (document.exitFullscreen||document.webkitExitFullscreen).call(document);
+      }else{
+        const p=(raiz.requestFullscreen||raiz.webkitRequestFullscreen).call(raiz);
+        if(p&&p.catch) p.catch(function(){ btn.hidden=true; });
+      }
+    });
+  })();
+</script>
+</body>
+</html>
